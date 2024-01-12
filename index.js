@@ -1,7 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
 
-// Função para obter o token de acesso do Spotify
 async function getAccessToken(clientId, clientSecret) {
   const response = await axios.post(
     'https://accounts.spotify.com/api/token',
@@ -17,7 +16,6 @@ async function getAccessToken(clientId, clientSecret) {
   return response.data.access_token;
 }
 
-// Função para obter as músicas da playlist
 async function getPlaylistTracks(accessToken, playlistId) {
   const response = await axios.get(
     `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
@@ -31,7 +29,6 @@ async function getPlaylistTracks(accessToken, playlistId) {
   return response.data.items;
 }
 
-// Função para obter detalhes de uma música
 async function getTrackDetails(trackId, accessToken) {
   const response = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
     headers: {
@@ -51,7 +48,6 @@ async function getTrackDetails(trackId, accessToken) {
   };
 }
 
-// Função principal para obter detalhes de todas as músicas da playlist
 async function getPlaylistDetails(clientId, clientSecret, playlistId) {
   try {
     const accessToken = await getAccessToken(clientId, clientSecret);
@@ -76,7 +72,6 @@ fs.readFile('.json', 'utf8', (error, data) => {
       return;
     }
   
-    // Convertendo o conteúdo para um objeto JavaScript
     const jsonData = JSON.parse(data);
   
     const clientId = jsonData.clientId;
@@ -85,7 +80,4 @@ fs.readFile('.json', 'utf8', (error, data) => {
 
     getPlaylistDetails(clientId, clientSecret, playlistId);
 
-    // Agora você pode acessar as propriedades do objeto
-    // console.log(jsonData.nome);
-    // console.log(jsonData.idade);
 });
