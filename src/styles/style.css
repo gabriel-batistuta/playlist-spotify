@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body > nav {
+    height: 20%;
+    width: 100%;
+}
+
+body > main {
+    height: 60%;
+    width: 60%;
+}
+
+main > h1#playlist-title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+aside#player-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+aside > iframe#player {
+    width: 50%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+}
