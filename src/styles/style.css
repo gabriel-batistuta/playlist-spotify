@@ -26,8 +26,7 @@ aside#player-container {
 
 aside > iframe#player {
     width: 50%;
-    text-align: center;
+    height: 12%;
     position: fixed;
     bottom: 0;
-    text-align: center;
 }
